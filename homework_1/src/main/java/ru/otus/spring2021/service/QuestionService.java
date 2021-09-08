@@ -1,9 +1,7 @@
-package ru.otus.spring.service;
+package ru.otus.spring2021.service;
 
-import ru.otus.spring.dao.QuestionaryDAOImp;
-import ru.otus.spring.model.Quiz;
-
-import java.io.IOException;
+import ru.otus.spring2021.dao.QuestionaryDAOImp;
+import ru.otus.spring2021.model.Quiz;
 
 public class QuestionService {
     private final QuestionaryDAOImp questionaryDAO;

@@ -1,4 +1,4 @@
-package ru.otus.spring.model;
+package ru.otus.spring2021.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

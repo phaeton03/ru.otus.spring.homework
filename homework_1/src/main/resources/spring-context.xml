@@ -4,10 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="questionaryDAOImp" class="ru.otus.spring.dao.QuestionaryDAOImp">
+    <bean id="questionaryDAOImp" class="ru.otus.QuestionaryDAOImp">
     </bean>
 
-    <bean id="personService" class="ru.otus.spring.service.QuestionService">
+    <bean id="personService" class="ru.otus.QuestionService">
         <constructor-arg name="questionaryDAO" ref="questionaryDAOImp"/>
     </bean>
 

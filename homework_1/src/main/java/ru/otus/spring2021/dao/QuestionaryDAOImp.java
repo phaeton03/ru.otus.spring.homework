@@ -1,8 +1,8 @@
-package ru.otus.spring.dao;
+package ru.otus.spring2021.dao;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
-import ru.otus.spring.model.Quiz;
+import ru.otus.spring2021.model.Quiz;
 
 import java.io.File;
 import java.io.FileReader;

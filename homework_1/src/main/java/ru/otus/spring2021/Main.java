@@ -1,8 +1,7 @@
-package ru.otus.spring;
+package ru.otus.spring2021;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.spring.model.Quiz;
-import ru.otus.spring.service.QuestionService;
+import ru.otus.spring2021.service.QuestionService;
 
 
 public class Main {
