@@ -16,6 +16,6 @@ public class UserService {
         if (!name.matches(regEx) || !surname.matches(regEx)) {
             throw new IncorrectNameOrSurname();
         }
-        System.out.printf("Your name is %s and your surname is %s %n", name, surname);
+        System.out.printf("Your name is %s and your surname is %s %n%n", name, surname);
     }
 }
