@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2021-10-04--0001-data-authors
+      author: nsnikolskiy
+      runOnChange: true
+      loadUpdateData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-10-04--0001-authors.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: authors
+
+  - changeSet:
+      id: 2021-10-05--0001-data-genres
+      author: nsnikolskiy
+      runOnChange: true
+      loadUpdateData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-10-04--0001-genres.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: GENRE
+
+  - changeSet:
+      id: 2021-10-05--0001-data-books
+      author: nsnikolskiy
+      runOnChange: true
+      loadUpdateData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-10-04--0001-books.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: BOOKS
