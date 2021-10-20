@@ -3,7 +3,7 @@ databaseChangeLog:
       id: 2021-10-04--0001-data-authors
       author: nsnikolskiy
       runOnChange: true
-      loadUpdateData:
+      loadData:
         primaryKey: id
         file: db/changeLog/data/data/2021-10-04--0001-authors.csv
         relativeToChangeLog: true
@@ -16,7 +16,7 @@ databaseChangeLog:
       id: 2021-10-05--0001-data-genres
       author: nsnikolskiy
       runOnChange: true
-      loadUpdateData:
+      loadData:
         primaryKey: id
         file: db/changeLog/data/data/2021-10-04--0001-genres.csv
         relativeToChangeLog: true
@@ -29,7 +29,7 @@ databaseChangeLog:
       id: 2021-10-05--0001-data-books
       author: nsnikolskiy
       runOnChange: true
-      loadUpdateData:
+      loadData:
         primaryKey: id
         file: db/changeLog/data/data/2021-10-04--0001-books.csv
         relativeToChangeLog: true
@@ -37,3 +37,16 @@ databaseChangeLog:
         quotChar: '"'
         encoding: UTF-8
         tableName: BOOKS
+
+  - changeSet:
+      id: 2021-10-19--0001-data-comments
+      author: nsnikolskiy
+      runOnChange: true
+      loadData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-10-19--0001-comments.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: COMMENTS

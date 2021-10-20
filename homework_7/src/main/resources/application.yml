@@ -11,9 +11,15 @@ spring:
     ansi:
       enabled: always
 
-#  sql:
-#    init:
-#      mode: always
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto:
+    show-sql: true
+
+  #  sql:
+  #    init:
+  #      mode: always
 
   liquibase:
     enabled: true

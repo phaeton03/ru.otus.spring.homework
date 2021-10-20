@@ -7,11 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import ru.otus.spring.homework_7.dao.*;
 import ru.otus.spring.homework_7.domain.Author;
 import ru.otus.spring.homework_7.domain.Book;
+import ru.otus.spring.homework_7.domain.Comment;
 import ru.otus.spring.homework_7.domain.Genre;
 
+import javax.persistence.EntityNotFoundException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,9 +24,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @SpringBootTest
-@ComponentScan({"ru.otus.spring.homework_7.cache",
-        "ru.otus.spring.homework_7.dao", "ru.otus.spring.homework_7.mapper"})
+@ComponentScan({"ru.otus.spring.homework_7.dao"})
 @DisplayName("Репозиторий для работы с книгами")
+@Transactional(propagation = Propagation.REQUIRED)
 class BookRepositoryJDBCTest {
     private static final long NEW_BOOK_ID = 90l;
     private static final String NEW_BOOK_NAME = "TEST";
@@ -95,7 +100,7 @@ class BookRepositoryJDBCTest {
         Set<Book> genreBooks = new HashSet<>(bookDaoJDBC.getByGenre(genre));
         val existingAuthor = new Author(EXISTING_AUTHOR_ID, AUTHOR_NAME, authorBooks);
         val existingGenre = new Genre(EXISTING_GENRE_ID, EXISTING_GENRE_NAME, genreBooks);
-        val existingBook = new Book(EXISTING_BOOK_ID, EXISTING_BOOK_NAME, existingAuthor, existingGenre);
+        val existingBook = new Book(EXISTING_BOOK_ID, EXISTING_BOOK_NAME, existingAuthor, existingGenre, new ArrayList<Comment>());
 
         val expectedBook = bookDaoJDBC.getById(existingBook.getId()).get();
         assertThat(expectedBook).usingRecursiveComparison().isEqualTo(existingBook);
@@ -107,18 +112,19 @@ class BookRepositoryJDBCTest {
     void shouldDeleteBook() {
         assertThatCode(() -> bookDaoJDBC.getById(EXISTING_BOOK_ID)).doesNotThrowAnyException();
         bookDaoJDBC.deleteById(EXISTING_BOOK_ID);
-        assertThatCode(() -> bookDaoJDBC.getById(EXISTING_BOOK_ID)).isInstanceOf(EmptyResultDataAccessException.class);
+        assertThat(bookDaoJDBC.getById(EXISTING_BOOK_ID).isEmpty());
     }
 
     @DisplayName("Save this book")
     @Test
     void shouldSaveBook() {
-        val newAuthor = new Author(NEW_AUTHOR_ID, NEW_AUTHOR_NAME, new HashSet<>());
+        val newAuthor = new Author(NEW_AUTHOR_ID, NEW_AUTHOR_NAME, new HashSet<Book>());
         val existingGenre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
-        Book newBook = new Book(NEW_BOOK_ID, NEW_BOOK_NAME, newAuthor, existingGenre);
+        Book newBook = new Book(NEW_BOOK_ID, NEW_BOOK_NAME, newAuthor, existingGenre, new ArrayList<Comment>());
 
-        assertThatCode(() -> bookDaoJDBC.getById(newBook.getId())).isInstanceOf(EmptyResultDataAccessException.class);
+        System.out.println(bookDaoJDBC.getById(newBook.getId()));
+        assertThat(bookDaoJDBC.getById(newBook.getId()).isEmpty());
         bookDaoJDBC.save(newBook);
-        assertThatCode(() -> bookDaoJDBC.getById(newBook.getId())).doesNotThrowAnyException();
+        assertThat( bookDaoJDBC.getById(newBook.getId()).isPresent());
     }
 }

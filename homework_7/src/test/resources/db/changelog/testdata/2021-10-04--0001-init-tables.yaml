@@ -40,3 +40,16 @@ databaseChangeLog:
         quotChar: '"'
         encoding: UTF-8
         tableName: BOOKS
+
+  - changeSet:
+      id: 2021-10-19--0001-data-comments
+      author: nsnikolskiy
+      runOnChange: true
+      loadData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-10-19--0001-comments.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: COMMENTS

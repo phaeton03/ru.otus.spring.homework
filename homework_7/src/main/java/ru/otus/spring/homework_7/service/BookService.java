@@ -1,13 +1,13 @@
 package ru.otus.spring.homework_7.service;
 
-//import org.springframework.shell.standard.ShellMethod;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.otus.spring.homework_7.dao.AuthorDao;
 import ru.otus.spring.homework_7.dao.BookDao;
 import ru.otus.spring.homework_7.dao.GenreDao;
 import ru.otus.spring.homework_7.domain.Book;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,6 +21,7 @@ public class BookService {
 
     private static final String OFFSET = "\n\n----------------------------\n\n";
 
+    @Transactional
     public String findAllBooks() {
         return OFFSET +
                 bookDao.
@@ -30,6 +31,7 @@ public class BookService {
                         collect(Collectors.joining("\n"));
     }
 
+    @Transactional
     public String findBooksByAuthor(String authorName) {
         return OFFSET +
                 bookDao.
@@ -39,6 +41,7 @@ public class BookService {
                         collect(Collectors.joining("\n"));
     }
 
+    @Transactional
     public String findBooksByGenre(String genreName) {
         return OFFSET +
                 bookDao.
@@ -48,11 +51,18 @@ public class BookService {
                         collect(Collectors.joining("\n"));
     }
 
+    @Transactional
     public String getBook(Long bookId) {
         return OFFSET + bookDao.getById(bookId).orElseThrow().toString();
     }
 
-    public void deleteBook(Long bookId) { bookDao.deleteById(bookId); }
+    @Transactional
+    public void deleteBook(Long bookId) {
+        bookDao.deleteById(bookId);
+    }
 
-    public void saveBook(Book book) { bookDao.save(book); }
+    @Transactional
+    public void saveBook(Book book) {
+        bookDao.save(book);
+    }
 }
