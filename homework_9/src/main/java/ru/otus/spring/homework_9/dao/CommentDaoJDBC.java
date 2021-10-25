@@ -6,7 +6,6 @@ import ru.otus.spring.homework_9.domain.Comment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -14,6 +13,7 @@ import java.util.List;
 public class CommentDaoJDBC implements CommentDao {
     @PersistenceContext
     private final EntityManager em;
+
     @Override
     public List<Comment> getAllComments() {
         return em.createQuery("select c from Comment c", Comment.class).getResultList();
@@ -21,12 +21,12 @@ public class CommentDaoJDBC implements CommentDao {
 
     @Override
     public void delete(Long id) {
-        Query query = em.createQuery("delete from Comment where id = :id");
+        em.remove(em.find(Comment.class, id));
     }
 
     @Override
     public void addComment(Comment comment) {
-        if(comment.getId() == null) {
+        if (comment.getId() == null) {
             em.persist(comment);
         } else {
             em.merge(comment);

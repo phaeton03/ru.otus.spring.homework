@@ -19,8 +19,10 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "author", orphanRemoval = true)
     private Set<Book> books;

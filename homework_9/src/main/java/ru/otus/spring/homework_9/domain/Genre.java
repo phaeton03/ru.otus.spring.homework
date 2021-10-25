@@ -17,8 +17,10 @@ public class Genre {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "genre", orphanRemoval = true)
     private Set<Book> books;
 }

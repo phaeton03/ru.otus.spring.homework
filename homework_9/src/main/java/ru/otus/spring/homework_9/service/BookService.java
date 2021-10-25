@@ -5,9 +5,11 @@ import org.springframework.stereotype.Service;
 import ru.otus.spring.homework_9.dao.AuthorDao;
 import ru.otus.spring.homework_9.dao.BookDao;
 import ru.otus.spring.homework_9.dao.GenreDao;
+import ru.otus.spring.homework_9.domain.Author;
 import ru.otus.spring.homework_9.domain.Book;
 
 import org.springframework.transaction.annotation.Transactional;
+import ru.otus.spring.homework_9.domain.Genre;
 
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -21,7 +23,7 @@ public class BookService {
 
     private static final String OFFSET = "\n\n----------------------------\n\n";
 
-    @Transactional
+    @Transactional(readOnly = true)
     public String findAllBooks() {
         return OFFSET +
                 bookDao.
@@ -31,27 +33,27 @@ public class BookService {
                         collect(Collectors.joining("\n"));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public String findBooksByAuthor(String authorName) {
+        Author author = authorDao.getAuthor(authorName);
         return OFFSET +
-                bookDao.
-                        getByAuthor(authorDao.getAuthor(authorName)).
+                author.getBooks().
                         stream().
                         map(Book::toString).
                         collect(Collectors.joining("\n"));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public String findBooksByGenre(String genreName) {
+        Genre genre = genreDao.getGenre(genreName);
         return OFFSET +
-                bookDao.
-                        getByGenre(genreDao.getGenre(genreName)).
+                genre.getBooks().
                         stream().
                         map(Book::toString).
                         collect(Collectors.joining("\n"));
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public String getBook(Long bookId) {
         return OFFSET + bookDao.getById(bookId).orElseThrow().toString();
     }

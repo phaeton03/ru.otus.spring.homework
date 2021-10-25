@@ -21,9 +21,9 @@ public class Comment {
 
     @Column(name = "name")
     @NonNull
-    String comment;
+    private String comment;
 
     @Column(name = "dt_created")
     @CreatedDate
-    LocalDate dateCreated;
+    private LocalDate dateCreated;
 }

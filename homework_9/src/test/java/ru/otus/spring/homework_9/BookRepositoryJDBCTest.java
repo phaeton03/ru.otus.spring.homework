@@ -65,7 +65,7 @@ class BookRepositoryJDBCTest {
     @Test
     void shouldReturnCorrectBookListWithAllinfoByGenre() {
         Genre genre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
-        val books = bookDaoJDBC.getByGenre(genre);
+        val books = genre.getBooks();
         assertThat(books).isNotNull().hasSize(EXPECTED_BOOK_SIZE_BY_GENRE).
                 allMatch(s -> !s.getName().equals("")).
                 allMatch(s -> s.getAuthor() != null).
@@ -79,7 +79,7 @@ class BookRepositoryJDBCTest {
     @Test
     void shouldReturnCorrectBookListWithAllinfoByAuthor() {
         Author author = authorDaoJDBC.getAuthor(AUTHOR_NAME);
-        val books = bookDaoJDBC.getByAuthor(author);
+        val books = author.getBooks();
         assertThat(books).isNotNull().hasSize(EXPECTED_BOOK_SIZE_BY_AUTHOR).
                 allMatch(s -> !s.getName().equals("")).
                 allMatch(s -> s.getAuthor() != null).
@@ -93,9 +93,9 @@ class BookRepositoryJDBCTest {
     @Test
     void shouldReturnBook() {
         Author author = authorDaoJDBC.getAuthor(AUTHOR_NAME);
-        Set<Book> authorBooks = new HashSet<>(bookDaoJDBC.getByAuthor(author));
+        Set<Book> authorBooks = new HashSet<>(author.getBooks());
         Genre genre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
-        Set<Book> genreBooks = new HashSet<>(bookDaoJDBC.getByGenre(genre));
+        Set<Book> genreBooks = new HashSet<>(genre.getBooks());
         val existingAuthor = new Author(EXISTING_AUTHOR_ID, AUTHOR_NAME, authorBooks);
         val existingGenre = new Genre(EXISTING_GENRE_ID, EXISTING_GENRE_NAME, genreBooks);
         val existingBook = new Book(EXISTING_BOOK_ID, EXISTING_BOOK_NAME, existingAuthor, existingGenre, new ArrayList<Comment>());

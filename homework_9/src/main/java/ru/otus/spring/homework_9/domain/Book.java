@@ -21,17 +21,20 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
     private Author author;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "genre_id")
     private Genre genre;
+
     @Fetch(FetchMode.SUBSELECT)
     @OneToMany(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id")
     private List<Comment> comments;
-
 }

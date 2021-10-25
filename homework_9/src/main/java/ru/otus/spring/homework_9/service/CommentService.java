@@ -26,7 +26,7 @@ public class CommentService {
         bookDao.addBookComment(comment, book);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public String getAllCommentsByBook(Long bookId) {
         Book book = bookDao.getById(bookId).orElseThrow();
         return OFFSET + book.getComments().
