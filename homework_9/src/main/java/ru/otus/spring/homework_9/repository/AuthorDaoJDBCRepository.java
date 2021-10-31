@@ -1,4 +1,4 @@
-package ru.otus.spring.homework_9.dao;
+package ru.otus.spring.homework_9.repository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -10,7 +10,7 @@ import javax.persistence.TypedQuery;
 
 @Repository
 @AllArgsConstructor
-public class AuthorDaoJDBC implements AuthorDao {
+public class AuthorDaoJDBCRepository implements AuthorDao {
 
     @PersistenceContext
     private final EntityManager em;

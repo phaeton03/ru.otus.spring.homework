@@ -2,9 +2,9 @@ package ru.otus.spring.homework_9.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.homework_9.dao.AuthorDao;
-import ru.otus.spring.homework_9.dao.BookDao;
-import ru.otus.spring.homework_9.dao.GenreDao;
+import ru.otus.spring.homework_9.repository.AuthorDao;
+import ru.otus.spring.homework_9.repository.BookDao;
+import ru.otus.spring.homework_9.repository.GenreDao;
 import ru.otus.spring.homework_9.domain.Author;
 import ru.otus.spring.homework_9.domain.Book;
 

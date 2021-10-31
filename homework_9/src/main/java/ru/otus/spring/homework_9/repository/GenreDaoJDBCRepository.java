@@ -1,16 +1,16 @@
-package ru.otus.spring.homework_9.dao;
+package ru.otus.spring.homework_9.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.spring.homework_9.domain.Genre;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-@Repository
+@Component
 @AllArgsConstructor
-public class GenreDaoJDBC implements GenreDao {
+public class GenreDaoJDBCRepository implements GenreDao {
     @PersistenceContext
     private final EntityManager em;
     @Override

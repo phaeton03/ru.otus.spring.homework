@@ -1,4 +1,4 @@
-package ru.otus.spring.homework_9.dao;
+package ru.otus.spring.homework_9.repository;
 
 import ru.otus.spring.homework_9.domain.Comment;
 

@@ -1,16 +1,16 @@
-package ru.otus.spring.homework_9.dao;
+package ru.otus.spring.homework_9.repository;
 
 import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 import ru.otus.spring.homework_9.domain.Comment;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
-@Repository
+@Component
 @AllArgsConstructor
-public class CommentDaoJDBC implements CommentDao {
+public class CommentDaoJDBCRepository implements CommentDao {
     @PersistenceContext
     private final EntityManager em;
 

@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import ru.otus.spring.homework_9.dao.*;
+import ru.otus.spring.homework_9.repository.*;
 import ru.otus.spring.homework_9.domain.Author;
 import ru.otus.spring.homework_9.domain.Book;
 import ru.otus.spring.homework_9.domain.Comment;
@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatCode;
 
 @SpringBootTest
-@ComponentScan({"ru.otus.spring.homework_9.dao"})
+@ComponentScan({"ru.otus.spring.homework_9.repository"})
 @DisplayName("Репозиторий для работы с книгами")
 @Transactional(propagation = Propagation.REQUIRED)
 class BookRepositoryJDBCTest {
@@ -41,17 +41,17 @@ class BookRepositoryJDBCTest {
     private static final String AUTHOR_NAME = "testПушкин";
 
     @Autowired
-    private BookDaoJDBC bookDaoJDBC;
+    private BookDaoJDBCRepository bookDaoJDBCRepository;
     @Autowired
-    private GenreDaoJDBC genreDaoJDBC;
+    private GenreDaoJDBCRepository genreDaoJDBCRepository;
     @Autowired
-    private AuthorDaoJDBC authorDaoJDBC;
+    private AuthorDaoJDBCRepository authorDaoJDBCRepository;
 
 
     @DisplayName("Should return correct information about all books")
     @Test
     void shouldReturnCorrectBookListWithAllinfo() {
-        val books = bookDaoJDBC.getAll();
+        val books = bookDaoJDBCRepository.getAll();
         assertThat(books).isNotNull().hasSize(EXPECTED_BOOK_SIZE).
                 allMatch(s -> !s.getName().equals("")).
                 allMatch(s -> s.getAuthor() != null).
@@ -64,7 +64,7 @@ class BookRepositoryJDBCTest {
     @DisplayName("Should return correct information about all books with concrete genre")
     @Test
     void shouldReturnCorrectBookListWithAllinfoByGenre() {
-        Genre genre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
+        Genre genre = genreDaoJDBCRepository.getGenre(EXISTING_GENRE_NAME);
         val books = genre.getBooks();
         assertThat(books).isNotNull().hasSize(EXPECTED_BOOK_SIZE_BY_GENRE).
                 allMatch(s -> !s.getName().equals("")).
@@ -78,7 +78,7 @@ class BookRepositoryJDBCTest {
     @DisplayName("Should return correct information about all books with concrete author")
     @Test
     void shouldReturnCorrectBookListWithAllinfoByAuthor() {
-        Author author = authorDaoJDBC.getAuthor(AUTHOR_NAME);
+        Author author = authorDaoJDBCRepository.getAuthor(AUTHOR_NAME);
         val books = author.getBooks();
         assertThat(books).isNotNull().hasSize(EXPECTED_BOOK_SIZE_BY_AUTHOR).
                 allMatch(s -> !s.getName().equals("")).
@@ -92,15 +92,15 @@ class BookRepositoryJDBCTest {
     @DisplayName("Should return correct information about the book")
     @Test
     void shouldReturnBook() {
-        Author author = authorDaoJDBC.getAuthor(AUTHOR_NAME);
+        Author author = authorDaoJDBCRepository.getAuthor(AUTHOR_NAME);
         Set<Book> authorBooks = new HashSet<>(author.getBooks());
-        Genre genre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
+        Genre genre = genreDaoJDBCRepository.getGenre(EXISTING_GENRE_NAME);
         Set<Book> genreBooks = new HashSet<>(genre.getBooks());
         val existingAuthor = new Author(EXISTING_AUTHOR_ID, AUTHOR_NAME, authorBooks);
         val existingGenre = new Genre(EXISTING_GENRE_ID, EXISTING_GENRE_NAME, genreBooks);
         val existingBook = new Book(EXISTING_BOOK_ID, EXISTING_BOOK_NAME, existingAuthor, existingGenre, new ArrayList<Comment>());
 
-        val expectedBook = bookDaoJDBC.getById(existingBook.getId()).get();
+        val expectedBook = bookDaoJDBCRepository.getById(existingBook.getId()).get();
         assertThat(expectedBook).usingRecursiveComparison().isEqualTo(existingBook);
         System.out.println("existing book: " + existingBook + "\n\nexpected book: " + expectedBook );
     }
@@ -108,21 +108,21 @@ class BookRepositoryJDBCTest {
     @DisplayName("Delete this book")
     @Test
     void shouldDeleteBook() {
-        assertThatCode(() -> bookDaoJDBC.getById(EXISTING_BOOK_ID)).doesNotThrowAnyException();
-        bookDaoJDBC.deleteById(EXISTING_BOOK_ID);
-        assertThat(bookDaoJDBC.getById(EXISTING_BOOK_ID).isEmpty());
+        assertThatCode(() -> bookDaoJDBCRepository.getById(EXISTING_BOOK_ID)).doesNotThrowAnyException();
+        bookDaoJDBCRepository.deleteById(EXISTING_BOOK_ID);
+        assertThat(bookDaoJDBCRepository.getById(EXISTING_BOOK_ID).isEmpty());
     }
 
     @DisplayName("Save this book")
     @Test
     void shouldSaveBook() {
         val newAuthor = new Author(NEW_AUTHOR_ID, NEW_AUTHOR_NAME, new HashSet<Book>());
-        val existingGenre = genreDaoJDBC.getGenre(EXISTING_GENRE_NAME);
+        val existingGenre = genreDaoJDBCRepository.getGenre(EXISTING_GENRE_NAME);
         Book newBook = new Book(NEW_BOOK_ID, NEW_BOOK_NAME, newAuthor, existingGenre, new ArrayList<Comment>());
 
-        System.out.println(bookDaoJDBC.getById(newBook.getId()));
-        assertThat(bookDaoJDBC.getById(newBook.getId()).isEmpty());
-        bookDaoJDBC.save(newBook);
-        assertThat( bookDaoJDBC.getById(newBook.getId()).isPresent());
+        System.out.println(bookDaoJDBCRepository.getById(newBook.getId()));
+        assertThat(bookDaoJDBCRepository.getById(newBook.getId()).isEmpty());
+        bookDaoJDBCRepository.save(newBook);
+        assertThat( bookDaoJDBCRepository.getById(newBook.getId()).isPresent());
     }
 }

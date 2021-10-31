@@ -2,12 +2,14 @@ package ru.otus.spring.homework_9.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.otus.spring.homework_9.dao.BookDao;
-import ru.otus.spring.homework_9.dao.CommentDao;
+import ru.otus.spring.homework_9.repository.BookDao;
+import ru.otus.spring.homework_9.repository.CommentDao;
 import ru.otus.spring.homework_9.domain.Book;
 import ru.otus.spring.homework_9.domain.Comment;
 
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,7 +33,7 @@ public class CommentService {
         Book book = bookDao.getById(bookId).orElseThrow();
         return OFFSET + book.getComments().
                 stream().
-                map(c -> c.getComment()).
+                map(Objects::toString).
                 collect(Collectors.joining("\n"));
     }
 }

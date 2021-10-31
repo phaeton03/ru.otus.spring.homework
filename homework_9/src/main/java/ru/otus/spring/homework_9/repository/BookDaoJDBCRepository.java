@@ -1,4 +1,4 @@
-package ru.otus.spring.homework_9.dao;
+package ru.otus.spring.homework_9.repository;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 @AllArgsConstructor
-public class BookDaoJDBC implements BookDao {
+public class BookDaoJDBCRepository implements BookDao {
     @PersistenceContext
     private final EntityManager em;
 

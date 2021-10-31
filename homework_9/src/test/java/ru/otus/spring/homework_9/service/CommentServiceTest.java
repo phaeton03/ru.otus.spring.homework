@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.otus.spring.homework_9.dao.BookDao;
-import ru.otus.spring.homework_9.dao.CommentDao;
+import ru.otus.spring.homework_9.repository.BookDao;
+import ru.otus.spring.homework_9.repository.CommentDao;
 import ru.otus.spring.homework_9.domain.Book;
 import ru.otus.spring.homework_9.domain.Comment;
 
