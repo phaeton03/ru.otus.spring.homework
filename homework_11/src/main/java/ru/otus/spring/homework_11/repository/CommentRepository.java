@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 import ru.otus.spring.homework_11.domain.Comment;
 
 
-public interface CommentRepository extends JpaRepository<Comment, Long>, CrudRepository<Comment, Long> {
+public interface CommentRepository extends JpaRepository<Comment, Long> {
 }

@@ -7,8 +7,12 @@ import ru.otus.spring.homework_11.domain.Book;
 
 import java.util.List;
 
-public interface BookRepository extends JpaRepository<Book, Long>, CrudRepository<Book, Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
     @Override
     @EntityGraph(value = "book-graph")
     List<Book> findAll();
+
+    @Override
+    @EntityGraph(value = "book-graph")
+    void deleteById(Long id);
 }

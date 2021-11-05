@@ -6,8 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.otus.spring.homework_11.dao.BookDao;
-import ru.otus.spring.homework_11.dao.CommentDao;
+import ru.otus.spring.homework_11.repository.*;
 import ru.otus.spring.homework_11.domain.Book;
 import ru.otus.spring.homework_11.domain.Comment;
 
@@ -27,10 +26,10 @@ class CommentServiceTest {
     private CommentService commentService;
 
     @Mock
-    BookDao bookDao;
+    BookRepository bookDao;
 
     @Mock
-    CommentDao commentDao;
+    CommentRepository commentDao;
 
     @Mock
     BookService bookService;

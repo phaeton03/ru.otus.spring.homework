@@ -68,12 +68,12 @@ public class BookService {
                         orElseThrow(() -> new BookNotFoundException(String.format("Book not found exception %s", bookId))).toString();
     }
 
-    @Transactional
+  //  @Transactional
     public void deleteBook(Long bookId) {
         bookRepository.deleteById(bookId);
     }
 
-    @Transactional
+   // @Transactional
     public void saveBook(Book book) {
         bookRepository.save(book);
     }
