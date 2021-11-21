@@ -1,0 +1,18 @@
+spring:
+  data:
+    mongodb:
+      database: awesomeMongo
+      port: 0
+
+  shell:
+    interactive:
+      enabled: false
+
+  output:
+    ansi:
+      enabled: always
+
+logging:
+  level:
+    root:
+      ERROR
