@@ -1,31 +1,32 @@
 package ru.otus.spring.homework_13.domain;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import ru.otus.spring.homework_13.domain.embedded.Author;
+import ru.otus.spring.homework_13.domain.embedded.Comment;
 import ru.otus.spring.homework_13.domain.embedded.Genre;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @NoArgsConstructor
 @Document
+@Getter
+@Setter
+@ToString
 public class Book {
     @Id
     private String id;
 
     private String name;
 
+    @DBRef
     private Author author;
 
     private Genre genre;
 
-    @DBRef
     private List<Comment> comments = new ArrayList<>();
 
     public Book(String name, Author author, Genre genre) {

@@ -3,12 +3,12 @@ package ru.otus.spring.homework_13.mongock.changelog;
 import com.github.cloudyrock.mongock.ChangeLog;
 import com.github.cloudyrock.mongock.ChangeSet;
 import com.mongodb.client.MongoDatabase;
-import ru.otus.spring.homework_13.domain.embedded.Author;
+import ru.otus.spring.homework_13.domain.Author;
 import ru.otus.spring.homework_13.domain.Book;
-import ru.otus.spring.homework_13.domain.Comment;
+import ru.otus.spring.homework_13.domain.embedded.Comment;
 import ru.otus.spring.homework_13.domain.embedded.Genre;
+import ru.otus.spring.homework_13.repository.AuthorRepository;
 import ru.otus.spring.homework_13.repository.BookRepository;
-import ru.otus.spring.homework_13.repository.CommentRepository;
 
 import java.util.List;
 
@@ -57,19 +57,14 @@ public class InitMongoDB {
         database.drop();
     }
 
-    @ChangeSet(order = "002", id = "initComment", author = "NikolskiyNS", runAlways = true)
-    public void initComment(CommentRepository commentRepository) {
-        commentRepository.saveAll(
+    @ChangeSet(order = "002", id = "initAuthor", author = "NikolskiyNS", runAlways = true)
+    public void initAuthor(AuthorRepository authorRepository) {
+        authorRepository.saveAll(
                 List.of(
-                        comment1,
-                        comment2,
-                        comment3,
-                        comment4,
-                        comment5,
-                        comment6,
-                        comment7,
-                        comment8,
-                        comment9
+                        pushkin,
+                        dostoevskiy,
+                        lermontov,
+                        esenin
                 ));
     }
 

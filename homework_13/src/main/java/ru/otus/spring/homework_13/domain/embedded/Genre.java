@@ -10,7 +10,9 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
+@ToString
 public class Genre {
     @NonNull
     private String name;

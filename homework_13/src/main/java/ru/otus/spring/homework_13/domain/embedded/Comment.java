@@ -1,4 +1,4 @@
-package ru.otus.spring.homework_13.domain;
+package ru.otus.spring.homework_13.domain.embedded;
 
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -7,17 +7,18 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDate;
 
-@RequiredArgsConstructor
 @NoArgsConstructor
-@Data
-@Document
+@Getter
+@Setter
+@ToString
 public class Comment {
-    @Id
-    private String id;
-
     @NonNull
     private String comment;
 
-    @CreatedDate
     private LocalDate dateCreated;
+
+    public Comment(@NonNull String comment) {
+        this.comment = comment;
+        this.dateCreated = LocalDate.now();
+    }
 }
