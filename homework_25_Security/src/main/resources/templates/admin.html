@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="../static/css/comments.css"
+          th:href="@{/css/comments.css}" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<h1 th:inline="text">Welcome admin: [[${#httpServletRequest.remoteUser}]]!</h1>
+
+<ul>
+    <li>
+        <form action="admin.html" th:method="post" th:name="commentId" th:action="@{/admin/delete-comment/{commentId}}">
+            <label for="comment">Delete comment by comment_id: </label>
+            <input type="number" id="comment" name="commentId" th:name="commentId"/>
+            <input type="submit" value="Submit"><br><br>
+        </form>
+    </li>
+    <li>
+        <form action="admin.html" th:method="post" th:name="bookId" th:action="@{/admin/delete-book/{bookId}}">
+            <label for="book">Delete book by book_id: </label>
+            <input type="number" id="book" name="bookId" th:name="bookId"/>
+            <input type="submit" value="Submit"><br><br>
+        </form>
+    </li>
+    <li>
+        <form action="admin.html" th:method="post" th:name="commentId" th:action="@{/admin/edit-comment}">
+            <label for="edit-comment">Edit comment by comment_id: </label>
+            <input type="number" id="edit-comment" name="commentId" th:name="commentId"/><br><br><br>
+            <label for="comment-input">Print new text here: </label><br>
+                 <textarea id="comment-input" th:name="message" maxlength="245"
+                      rows="4" cols="50" placeholder="Enter you comment here">
+                 </textarea><br><br>
+            <input type="submit" th:name="comment-input" value="Submit"><br><br>
+        </form>
+    </li>
+</ul>
+</body>
+</html>

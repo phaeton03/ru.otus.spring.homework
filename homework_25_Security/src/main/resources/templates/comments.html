@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Welcome to the Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/comments.css" type="text/css"
+          th:href="@{/css/comments.css}" rel="stylesheet">
+</head>
+<body>
+<h1>Comments:</h1>
+
+<table class="comments">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Comment</th>
+        <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="comment : ${comments}">
+        <td th:text="${comment.id}">1</td>
+        <td th:text="${comment.comment}">Good</td>
+        <td th:text="${comment.dateCreated}">19-10-2021</td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <form id="edit-form" action="comments.html" th:method="post" th:name="bookId" th:action="@{/comments(bookId=${bookId})}">
+        <h4>Publish Your Comment:</h4>
+        <!--    <label for="comment-input">Post your comment: </label><br><br>-->
+        <textarea id="comment-input" th:name="msg" maxlength="245"
+                  rows="4" cols="50" placeholder="Enter you comment here">
+        </textarea><br><br>
+        <input type="submit" th:name="comment-input" value="Submit"><br><br>
+    </form>
+</div>
+</body>
+</html>
