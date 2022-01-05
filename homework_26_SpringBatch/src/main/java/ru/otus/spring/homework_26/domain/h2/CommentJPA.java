@@ -10,7 +10,8 @@ import java.time.LocalDate;
 @Entity
 @RequiredArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @Table(name = "comments")
 @EntityListeners(AuditingEntityListener.class)
 public class CommentJPA {

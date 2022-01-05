@@ -1,9 +1,6 @@
 package ru.otus.spring.homework_26.domain.h2;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -11,7 +8,8 @@ import javax.persistence.*;
 import java.util.List;
 
 @AllArgsConstructor
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name = "books")

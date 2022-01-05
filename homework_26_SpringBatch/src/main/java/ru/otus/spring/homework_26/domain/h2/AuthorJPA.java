@@ -9,11 +9,11 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-@EqualsAndHashCode(exclude = "books")
-@ToString(exclude = "books")
 @Entity
 @Table(name = "authors")
+@Getter
+@Setter
+@ToString
 public class AuthorJPA {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

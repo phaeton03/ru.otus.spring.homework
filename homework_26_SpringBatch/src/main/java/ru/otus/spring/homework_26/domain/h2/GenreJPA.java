@@ -8,7 +8,8 @@ import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = "books")
 @ToString(exclude = "books")
 @Entity
