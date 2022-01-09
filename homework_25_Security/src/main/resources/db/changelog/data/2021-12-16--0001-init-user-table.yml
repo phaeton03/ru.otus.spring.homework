@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2021-12-16--0001-data-users
+      author: nsnikolskiy
+      runOnChange: true
+      loadData:
+        primaryKey: id
+        file: db/changeLog/data/data/2021-12-16--0001-users.csv
+        relativeToChangeLog: true
+        separator: ;
+        quotChar: '"'
+        encoding: UTF-8
+        tableName: users
