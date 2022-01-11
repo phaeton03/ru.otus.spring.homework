@@ -1,0 +1,6 @@
+lifecycle:
+  transformation:
+    ordinary:
+      duration: 2000
+    metamorphosis:
+      duration: 4000
