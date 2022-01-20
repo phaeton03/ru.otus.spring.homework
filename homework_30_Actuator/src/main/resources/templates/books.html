@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Welcome to the Library</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="../static/css/books.css"
+          th:href="@{/css/books.css}" type="text/css" rel="stylesheet" />
+</head>
+<body>
+<h1 th:inline="text">Welcome user: [[${#httpServletRequest.remoteUser}]]!</h1>
+<h3>Books: </h3>
+
+<table class="books">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author</th>
+        <th>Genre</th>
+        <th>Comments</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">1</td>
+        <td th:text="${book.name}">Moby-Dick</td>
+        <td th:text="${book.author}">German Melvin</td>
+        <td th:text="${book.genre}">Adventure</td>
+        <td>
+            <span th:text="${#lists.size(book.comments)}">2</span> comment/s
+            <a href="comments.html"
+               th:href="@{/comments(bookId=${book.id})}"
+               th:if="${not #lists.isEmpty(book.comments)}">view</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<!--<div class="error">-->
+<!--    <p th:if="${message}" th:text="${message}">Nothing found</p>-->
+<!--</div>-->
+
+
+
+<div class="a">
+    <h3>Options</h3>
+    <form action="books.html" th:method="get" th:action="@{/{genre}}">
+        <label for="genre">Choose by genre: </label>
+        <input type="text" id="genre" th:name="genre"/>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+    <form action="books.html" th:method="get" th:action="@{/{author}}">
+        <label for="author">Choose by author:</label>
+        <input type="text" id="author" th:name="author"/>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+    <form action="books.html" th:method="get" th:action="@{/{id}}">
+        <label for="bookId">Choose by id:</label>
+        <input type="number" id="bookId" th:name="id" th:min="1"/>
+        <input type="submit" value="Submit"><br><br>
+    </form>
+    <form th:action="@{/logout}" method="post">
+        <label>Sign out form:</label>
+        <input type="submit" value="Sign Out"/>
+    </form>
+    <form action="books.html" th:method="get" th:action="@{/}">
+        <button class="button1" type="submit">Home</button>
+    </form>
+</div>
+</body>
+</html>

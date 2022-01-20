@@ -1,0 +1,45 @@
+body {
+    font-family: 'DejaVu Sans', Arial, Helvetica;
+    font-size: 18px;
+    padding: 50px;
+    background-color: #ffffff;
+    margin: 1px auto;
+    padding: 20px 20px;
+    width: 850px;
+}
+
+.books, .books td {
+    border: 3px solid lightgray;
+    padding: 5px;
+}
+  div.a {
+      width: 200px;
+  }
+
+div.error {
+    padding: 10px 10px;
+    width: 1000px;
+    text-align: left;
+    margin: 1px auto;
+    color: red;
+}
+
+.button1 {
+    background-color: white;
+    margin: 4px 2px;
+    color: black;
+    font-size: 24px;
+    border: 2px solid #4CAF50;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 60px;
+}
+
+.button1:hover {
+    background-color: #4CAF50;
+    margin: 4px 2px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    margin-top: 60px;
+}

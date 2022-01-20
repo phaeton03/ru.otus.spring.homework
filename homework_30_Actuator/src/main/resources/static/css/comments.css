@@ -1,0 +1,14 @@
+body {
+    font-family: 'DejaVu Sans', Arial, Helvetica;
+    font-size: 18px;
+    padding: 50px;
+    background-color: #ffffff;
+    margin: 1px auto;
+    padding: 20px 20px;
+    width: 850px;
+}
+
+.comments, .comments td {
+    border: 3px solid lightgray;
+    padding: 5px;
+}
