@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.1 (HEAD)
+  creationTimestamp: null
+  namespace: contino
+  labels:
+    io.kompose.service: app
+  name: app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: app
+    spec:
+      containers:
+        - name: app
+          env:
+            - name: SPRING_DATASOURCE_DRIVER_CLASS_NAME
+              value: org.postgresql.Driver
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: postgres
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://postgres:5432/db
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+          image: app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8080
+          securityContext:
+            privileged: true
+      restartPolicy: Always
