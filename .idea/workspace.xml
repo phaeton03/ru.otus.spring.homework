@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c158df4a-adb7-407f-af0d-9c6a63a30883" name="Default Changelist" comment="1. Первая версия" />
+    <list default="true" id="c158df4a-adb7-407f-af0d-9c6a63a30883" name="Default Changelist" comment="1. MANIFEST.MF">
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/QuestionsToStudents.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/ru/otus/spring/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/ru/otus/spring/dao/QuestionaryDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/ru/otus/spring/dao/QuestionaryDAOImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/ru/otus/spring/model/Quiz.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/ru/otus/spring/service/QuestionService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/classes/spring-context.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/homework_1-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/homework_1/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,6 +33,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -97,6 +115,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -115,7 +134,7 @@
       <workItem from="1630918552909" duration="330000" />
       <workItem from="1630919002894" duration="311000" />
       <workItem from="1630919523638" duration="866000" />
-      <workItem from="1630926521516" duration="244000" />
+      <workItem from="1630926521516" duration="687000" />
     </task>
     <task id="LOCAL-00001" summary="1. Первая версия">
       <created>1630926159469</created>
@@ -124,7 +143,14 @@
       <option name="project" value="LOCAL" />
       <updated>1630926159469</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="1. MANIFEST.MF">
+      <created>1630926872999</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1630926872999</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -144,6 +170,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="1. Первая версия" />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Первая версия" />
+    <MESSAGE value="1. MANIFEST.MF" />
+    <option name="LAST_COMMIT_MESSAGE" value="1. MANIFEST.MF" />
   </component>
 </project>

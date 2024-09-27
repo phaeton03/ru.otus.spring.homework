@@ -1,0 +1,10 @@
+${AnsiBackground.BLUE}
+    _  _                                      _    _                        _                 ____
+   FJ  L]     ____     _ _____      ____     F L  J J     ____     _ ___   FJ __             F___ J
+  J |__| L   F __ J   J '_  _ `,   F __ J   J J .. L L   F __ J   J '__ ",J |/ /L            `-__| L${AnsiBackground.RED}
+  |  __  |  | |--| |  | |_||_| |  | _____J  | |/  \| |  | |--| |  | |__|-J|    \              |__  (
+  F L__J J  F L__J J  F L LJ J J  F L___--. F   /\   J  F L__J J  F L  `-'F L:\ J          .-____] J
+ J__L  J__LJ\______/FJ__L LJ J__LJ\______/FJ___//\\___LJ\______/FJ__L    J__L \\_J.________J\______/F ${AnsiBackground.GREEN}
+ |__L  J__| J______F |__L LJ J__| J______F |___/  \___| J______F |__L    |__L  \L_|________|J______F
+                                                                                  L________J
+${AnsiBackground.DEFAULT}
